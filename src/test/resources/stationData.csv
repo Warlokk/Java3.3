@@ -3,5 +3,3 @@ Station Up, initial 0    |   0   |   next      |1
 Station Down, initial 0  |   0   |   prev      |9
 Station Up, initial 9    |   9   |   next      |0
 Station Down, initial 9  |   9   |   prev      |8
-Station Up, initial 5    |   5   |   next      |6
-Station Down, initial 5  |   5   |   prev      |4
