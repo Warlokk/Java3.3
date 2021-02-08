@@ -1,4 +1,4 @@
-﻿  TEST NAME            INIT VOLUME  Change  Expected
+﻿  TEST NAME           INIT VOLUME  Change   Expected
 Volume Up, initial 0    |   0   |   +      |1
 Volume Down, initial 0  |   0   |   -      |0
 Volume Up, initial 10   |   10  |   +      |10

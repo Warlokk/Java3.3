@@ -3,6 +3,7 @@ package ru.netology;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,38 +13,24 @@ class RadioTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/volumeData.csv", delimiter = '|', numLinesToSkip = 1)
-    void shouldChangeVolume(String test, int currentVolume, String change, int expected) {
-        settings.setCurrentVolume(currentVolume);
-        int newVolume = 0;
-        if (change.equals("+")) {
-            newVolume = currentVolume + 1;
-        }
-        if (change.equals("-")) {
-            newVolume = currentVolume - 1;
-        }
-        settings.setCurrentVolume(newVolume);
+    void shouldChangeVolume(String test, int initialVolume, String changeVolume, int expected) {
+        settings.setCurrentVolumeTest(initialVolume);
+        settings.setCurrentVolume(changeVolume);
         assertEquals(expected, settings.getCurrentVolume());
     }
 
     @ParameterizedTest
     @CsvFileSource(resources = "/stationData.csv", delimiter = '|', numLinesToSkip = 1)
-    void shouldChangeStation(String test, int currentStation, String change, int expected) {
-        settings.setCurrentStation(currentStation);
-        int newStation = 0;
-        if (change.equals("next")) {
-            newStation = currentStation + 1;
-        }
-        if (change.equals("prev")) {
-            newStation = currentStation - 1;
-        }
-        settings.setCurrentStation(newStation);
+    void shouldChangeStation(String test, int initialStation, String changeStation, int expected) {
+        settings.setCurrentStationTest(initialStation);
+        settings.setCurrentStation(changeStation);
         assertEquals(expected, settings.getCurrentStation());
     }
 
-    @Test
-    void shouldChangeStationRC() {
-        int inputRC = 5;
-        settings.setCurrentStation(inputRC);
+    @ParameterizedTest
+    @CsvSource({"5", "0", "9"})
+    void shouldChangeStationRC(int inputRC) {
+        settings.setCurrentStationRC(inputRC);
         assertEquals(inputRC, settings.getCurrentStation());
     }
 }

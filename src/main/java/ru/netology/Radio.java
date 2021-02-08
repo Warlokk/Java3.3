@@ -13,7 +13,18 @@ public class Radio {
         return currentStation;
     }
 
-    public void setCurrentStation(int newStation) {
+    public void setCurrentStationTest(int initialStation) {
+        this.currentStation = initialStation;
+    }
+
+    public void setCurrentStation(String changeStation) {
+        int newStation = getCurrentStation();
+        if (changeStation.equals("next")) {
+            newStation++;
+        }
+        if (changeStation.equals("prev")) {
+            newStation--;
+        }
         if (newStation >= minStation && newStation <= maxStation)
             this.currentStation = newStation;
         if (newStation < minStation)
@@ -22,17 +33,28 @@ public class Radio {
             this.currentStation = minStation;
     }
 
+    public void setCurrentStationRC(int inputRC) {
+        this.currentStation = inputRC;
+    }
+
     public int getCurrentVolume() {
         return currentVolume;
     }
 
-    public void setCurrentVolume(int newVolume) {
+    public void setCurrentVolumeTest(int initialVolume) {
+        this.currentVolume = initialVolume;
+    }
+
+    public void setCurrentVolume(String changeVolume) {
+        int newVolume = getCurrentVolume();
+        if (changeVolume.equals("+")) {
+            newVolume++;
+        }
+        if (changeVolume.equals("-")) {
+            newVolume--;
+        }
         if (newVolume >= minVolume && newVolume <= maxVolume)
             this.currentVolume = newVolume;
-        if (newVolume < minVolume)
-            return;
-        if (newVolume > maxVolume)
-            return;
     }
 
 }
