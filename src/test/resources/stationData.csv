@@ -1,5 +1,5 @@
-  TEST NAME            INIT STATION  Change      Expected
-Station Up, initial 0    |   0   |   next      |1
-Station Down, initial 0  |   0   |   prev      |9
-Station Up, initial 9    |   9   |   next      |0
-Station Down, initial 9  |   9   |   prev      |8
+  TEST NAME                              INIT STATION  MAX STATION   Change      Expected
+Station Up, initial 0, MaxStation 5       |   0   |      5        | next      |1
+Station Down, initial 0, MaxStation 10    |   0   |      10       | prev      |10
+Station Up, initial 29, MaxStation 29     |   29  |      29       | next      |0
+Station Down, initial 9, MaxStation 15    |   9   |      15       | prev      |8
