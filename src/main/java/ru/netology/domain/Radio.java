@@ -13,7 +13,10 @@ public class Radio {
         return maxStation;
     }
 
-    public void setMaxStation(int maxStation) {
+    public Radio() {
+    }
+
+    public Radio(int maxStation) {
         this.maxStation = maxStation;
     }
 
@@ -40,7 +43,7 @@ public class Radio {
 
     public void setCurrentStationDown() {
         if (getCurrentStation() == minStation) {
-            setCurrentStation(getMaxStation());
+            setCurrentStation(maxStation);
         } else
             setCurrentStation(getCurrentStation() - 1);
     }

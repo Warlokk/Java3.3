@@ -8,8 +8,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
-
     Radio settings = new Radio();
+
 
     @ParameterizedTest
     @CsvFileSource(resources = "/volumeData.csv", delimiter = '|', numLinesToSkip = 1)
@@ -23,19 +23,13 @@ class RadioTest {
     @ParameterizedTest
     @CsvFileSource(resources = "/stationData.csv", delimiter = '|', numLinesToSkip = 1)
     void shouldChangeStation(String test, int initialStation, int maxStation, String changeStation, int expected) {
+        Radio settings = new Radio(maxStation);
         settings.setCurrentStation(initialStation);
-        settings.setMaxStation(maxStation);
         if (changeStation.equals("next")) settings.setCurrentStationUp();
         if (changeStation.equals("prev")) settings.setCurrentStationDown();
         assertEquals(expected, settings.getCurrentStation());
     }
 
-    @ParameterizedTest
-    @CsvSource({"5", "15", "30"})
-    void shouldChangeMaxStation(int maxStation) {
-        settings.setMaxStation(maxStation);
-        assertEquals(maxStation, settings.getMaxStation());
-    }
 
     @ParameterizedTest
     @CsvSource({"5", "0", "19"})
